@@ -2,6 +2,7 @@ package edu.seamcarving.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import org.junit.*;
 
@@ -77,6 +78,69 @@ public class PecherkinSeamCarverTest extends Assert {
 	}
 	
 	/**
+	 * The test for file mountains.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnMountains() throws IOException {
+		test("mountains");
+	}
+	
+	/**
+	 * The test for file bridge.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnBridge() throws IOException {
+		test("bridge");
+	}
+	
+	/**
+	 * The test for file lake.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnLake() throws IOException {
+		test("lake");
+	}
+	
+	/**
+	 * The test for file sea.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnSea() throws IOException {
+		test("sea");
+	}
+	
+	/**
+	 * The test for file BlackWhite.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnBlackWhite() throws IOException {
+		test("BlackWhite");
+	}
+	
+	/**
+	 * The test for file Red.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnRed() throws IOException {
+		test("Red");
+	}
+	
+	/**
+	 * The test for file Green.png
+	 * @throws IOException unless can not find resource file, can not write temporary file or can not get access to temporary file
+	 */
+	@Test
+	public void testFindSeamsOnGreen() throws IOException {
+		test("Green");
+	}
+	
+	/**
 	 * Delete temporary file after executing all tests.
 	 */
 	@AfterClass
@@ -90,10 +154,12 @@ public class PecherkinSeamCarverTest extends Assert {
 	 * @param name the name of file that will be tested 
 	 * @throws IOException unless can not create temporary file or get access to it
 	 */
+	@SuppressWarnings("deprecation")
 	private void test(String name) throws IOException {
 		ClassLoader ld = this.getClass().getClassLoader();
-		File imgInput = new File(ld.getResource("resources/" + name + ".png").getFile().replaceAll("%20", " "));
-		File test = new File(ld.getResource("resources/" + name + ".printseams.txt").getFile().replaceAll("%20", " "));
+		
+		File imgInput = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".png").getFile()));
+		File test = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".printseams.txt").getFile()));
 		
 		ISeamCarver carver = new PecherkinSeamCarver(new MatrixPixels(imgInput), new DualGradientEnergyFunction());
 		File result = new File("tmpfile.txt");

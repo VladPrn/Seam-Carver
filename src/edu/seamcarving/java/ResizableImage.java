@@ -38,6 +38,8 @@ public class ResizableImage extends JPanel {
 	/**
 	 * The constructor creates an instance of ResizableImage from path to image file.
 	 * @param file the file of image from which will be created instance of the ResizableImage
+	 * @param version determines whose implementation of Seam Carving use
+	 * @param mVersion determines which metrics use for calculate energy of pixels
 	 * @exception IOException unless can not find file or can not get access to file
 	 */
 	public ResizableImage(String file, SeamCarvingVersion version, MetricsVersion mVersion) throws IOException {
@@ -77,7 +79,7 @@ public class ResizableImage extends JPanel {
 	/**
 	 * Save current (resized) image to file.
 	 * @param output the file for saved picture
-	 * @throws IOException can not write file or can not get access to file
+	 * @throws IOException unless can not write file or can not get access to file
 	 */
 	public void save(String output) throws IOException {
 		String format = output.substring(output.lastIndexOf('.') + 1);

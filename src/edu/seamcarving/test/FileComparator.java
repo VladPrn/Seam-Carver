@@ -18,6 +18,7 @@ public class FileComparator {
 	 * @return true if files equals false otherwise
 	 * @throws IOException unless can not find file a or b, can not get access to file a or b.
 	 */
+	@SuppressWarnings("resource")
 	public static boolean compareFiles(File a, File b) throws IOException {
 		BufferedReader bra = new BufferedReader(new FileReader(a));
 		BufferedReader brb = new BufferedReader(new FileReader(b));

@@ -2,6 +2,7 @@ package edu.seamcarving.test;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLDecoder;
 
 import org.junit.*;
 
@@ -153,12 +154,14 @@ public class KyznetsovaSeamCarverTest extends Assert {
 	 * @param name the name of file that will be tested 
 	 * @throws IOException unless can not create temporary file or get access to it
 	 */
+	@SuppressWarnings("deprecation")
 	private void test(String name) throws IOException {
 		ClassLoader ld = this.getClass().getClassLoader();
-		File imgInput = new File(ld.getResource("resources/" + name + ".png").getFile().replaceAll("%20", " "));
-		File test = new File(ld.getResource("resources/" + name + ".printseams.txt").getFile().replaceAll("%20", " "));
 		
-		ISeamCarver carver = new KyznetsovaSeamCarver(new MatrixPixels(imgInput), new DualGradientEnergyFunction());
+		File imgInput = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".png").getFile()));
+		File test = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".printseams.txt").getFile()));
+		
+		ISeamCarver carver = new PecherkinSeamCarver(new MatrixPixels(imgInput), new DualGradientEnergyFunction());
 		File result = new File("tmpfile.txt");
 		PrintSeams.main(carver, result);
 		

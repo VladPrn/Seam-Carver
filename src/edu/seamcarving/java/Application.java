@@ -26,6 +26,7 @@ import javax.swing.JRadioButtonMenuItem;
 /**
  * The GUI of Seam Carving application.
  * @author Vladislav Pecherkin
+ * @author Elena Kyznetsova
  */
 public class Application {
 	private JFrame frame;

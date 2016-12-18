@@ -22,7 +22,7 @@ public class KyznetsovaSeamCarver implements ISeamCarver {
 	
 	/**
 	 * The constructor creates an instance of class from file instance of class MatrixPixels
-	 * @param instance of class MatrixPixels
+	 * @param matrix the instance of class MatrixPixels
 	 * @param metrics the metrics for calculate energy of pixels
 	 */
 	public KyznetsovaSeamCarver(MatrixPixels matrix, IMetrics metrics) {
