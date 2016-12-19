@@ -5,8 +5,8 @@ package edu.seamcarving.java;
  * @author Elena Kyznetsova
  */
 public enum MetricsVersion {
-	neighbors,
-	gradient,
-	changedGradient,
-	sobels;
+	NEIGHBORS,
+	GRADIENT,
+	CHANGED_GRADIENT,
+	SOBELS
 }

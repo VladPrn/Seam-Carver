@@ -48,13 +48,13 @@ public class ResizableImage extends JPanel {
 		
 		IMetrics metrics = null;
 		switch (mVersion) {
-   			case neighbors: metrics = new DifferenceBetweenNeighbors(); break;
-   			case changedGradient: metrics = new ChangedDualGradientEnergyFunction(); break;
-   			case sobels: metrics = new Sobels(); break;
-   			case gradient: metrics = new DualGradientEnergyFunction(); break;
+   			case NEIGHBORS: metrics = new DifferenceBetweenNeighbors(); break;
+   			case CHANGED_GRADIENT: metrics = new ChangedDualGradientEnergyFunction(); break;
+   			case SOBELS: metrics = new Sobels(); break;
+   			case GRADIENT: metrics = new DualGradientEnergyFunction(); break;
 		}
 		
-		if (version == SeamCarvingVersion.pecherkin) {
+		if (version == SeamCarvingVersion.PECHERKIN) {
 			carver = new PecherkinSeamCarver(matrix, metrics);
 		} else {
 			carver = new KyznetsovaSeamCarver(matrix, metrics);

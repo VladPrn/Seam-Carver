@@ -29,7 +29,7 @@ import javax.swing.JRadioButtonMenuItem;
  * @author Elena Kyznetsova
  */
 public class Application {
-	private JFrame frame;
+	private ConstantlyDecreasingFrame frame;
 	private ResizableImage rpanel;
 	private JRadioButtonMenuItem radioButtonPecherkin;
 	private JRadioButtonMenuItem radioButtonKyznetsova;
@@ -93,19 +93,19 @@ public class Application {
 						MetricsVersion mVersion;
 						
 						if (radioButtonPecherkin.isSelected()) {
-							version = SeamCarvingVersion.pecherkin;
+							version = SeamCarvingVersion.PECHERKIN;
 						} else {
-							version = SeamCarvingVersion.kyznetsova;
+							version = SeamCarvingVersion.KYZNETSOVA;
 						}
 						
 						if (radioButtonGradient.isSelected()) {
-							mVersion = MetricsVersion.gradient;
+							mVersion = MetricsVersion.GRADIENT;
 						} else if(radioButtonChangedGradient.isSelected()) {
-							mVersion = MetricsVersion.changedGradient;
+							mVersion = MetricsVersion.CHANGED_GRADIENT;
 						} else if(radioButtonSobels.isSelected()) {
-							mVersion = MetricsVersion.sobels;
+							mVersion = MetricsVersion.SOBELS;
 						} else{
-							mVersion = MetricsVersion.neighbors;
+							mVersion = MetricsVersion.NEIGHBORS;
 						}
 						rpanel = new ResizableImage(file.getPath(), version, mVersion);
 						frame.getContentPane().add(rpanel, BorderLayout.CENTER);

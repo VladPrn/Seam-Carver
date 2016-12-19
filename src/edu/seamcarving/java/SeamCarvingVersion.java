@@ -5,6 +5,6 @@ package edu.seamcarving.java;
  * @author Vladislav Pecherkin
  */
 public enum SeamCarvingVersion {
-	pecherkin,
-	kyznetsova;
+	PECHERKIN,
+	KYZNETSOVA;
 }
