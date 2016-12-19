@@ -161,7 +161,7 @@ public class KyznetsovaSeamCarverTest extends Assert {
 		File imgInput = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".png").getFile()));
 		File test = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".printseams.txt").getFile()));
 		
-		ISeamCarver carver = new PecherkinSeamCarver(new MatrixPixels(imgInput), new DualGradientEnergyFunction());
+		ISeamCarver carver = new KyznetsovaSeamCarver(new MatrixPixels(imgInput), new DualGradientEnergyFunction());
 		File result = new File("tmpfile.txt");
 		PrintSeams.main(carver, result);
 		
