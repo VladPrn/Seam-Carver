@@ -11,6 +11,7 @@ import java.io.IOException;
  * @author Vladislav Pecherkin
  */
 public class FileComparator {
+	
 	/**
 	 * Method for compare two files.
 	 * @param a the first file
@@ -27,11 +28,13 @@ public class FileComparator {
 			String stra = bra.readLine();
 			String strb = brb.readLine();
 			if (!stra.equals(strb)) {
+				bra.close();
+				brb.close();
 				return false;
 			}
 		}
 	
-		boolean result = bra.ready() == brb.ready();
+		boolean result = (bra.ready() == brb.ready());
 		bra.close();
 		brb.close();
 		return result;

@@ -145,7 +145,7 @@ public class PecherkinSeamCarverTest extends Assert {
 	 */
 	@AfterClass
 	public static void deleteTmpFile() {
-		File tmp = new File("tmpfile.txt");
+		File tmp = new File("tmp.txt");
 		tmp.delete();
 	}
 	
@@ -156,15 +156,14 @@ public class PecherkinSeamCarverTest extends Assert {
 	 */
 	@SuppressWarnings("deprecation")
 	private void test(String name) throws IOException {
-		ClassLoader ld = this.getClass().getClassLoader();
-		
-		File imgInput = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".png").getFile()));
-		File test = new File(URLDecoder.decode(ld.getResource("resources/" + name + ".printseams.txt").getFile()));
-		
-		ISeamCarver carver = new PecherkinSeamCarver(new MatrixPixels(imgInput), new DualGradientEnergyFunction());
-		File result = new File("tmpfile.txt");
-		PrintSeams.main(carver, result);
-		
-		assertTrue(FileComparator.compareFiles(test, result));
+			File inputFile = new File("src/resources/" + name + ".png");
+			File testFile = new File("src/resources/" + name + ".printseams.txt");
+			
+			ISeamCarver carver = new PecherkinSeamCarver(new MatrixPixels(inputFile), new DualGradientEnergyFunction());
+			File result = new File("tmp.txt");
+			
+			PrintSeams.main(carver, result);
+			assertTrue(TextComparator.compare(testFile, result));	
+	
 	}
 }
